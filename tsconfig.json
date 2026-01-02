@@ -1,0 +1,3 @@
+{
+  "extends": "@nitro-mono/config/tsconfig.base.json"
+}
