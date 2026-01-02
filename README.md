@@ -1,18 +1,8 @@
-# nitro-mono
+# nitro-mono reproduction
 
-This project was created with [Better-T-Stack](https://github.com/AmanVarshney01/create-better-t-stack), a modern TypeScript stack that combines React, TanStack Start, Self, and more.
+This reproduction repo is intended to demonstrate how using nitro-nightly crashes TanStack Start apps using bun in a Turbo monorepo.
 
-## Features
-
-- **TypeScript** - For type safety and improved developer experience
-- **TanStack Start** - SSR framework with TanStack Router
-- **TailwindCSS** - Utility-first CSS for rapid UI development
-- **shadcn/ui** - Reusable UI components
-- **Authentication** - Better-Auth
-- **Biome** - Linting and formatting
-- **Turborepo** - Optimized monorepo build system
-
-## Getting Started
+## How to
 
 First, install the dependencies:
 
@@ -20,32 +10,8 @@ First, install the dependencies:
 bun install
 ```
 
+Then, cd into `apps/web` and run `bun dev`. The server runs fine.
 
-Then, run the development server:
+If you cd into `apps/nitro-nightly` and do the same, you'll notice that the dev server crashes.
 
-```bash
-bun run dev
-```
-
-Open [http://localhost:3001](http://localhost:3001) in your browser to see your fullstack application.
-
-
-
-## Project Structure
-
-```
-nitro-mono/
-├── apps/
-│   └── web/         # Fullstack application (React + TanStack Start)
-├── packages/
-│   ├── api/         # API layer / business logic
-│   ├── auth/        # Authentication configuration & logic
-│   └── db/          # Database schema & queries
-```
-
-## Available Scripts
-
-- `bun run dev`: Start all applications in development mode
-- `bun run build`: Build all applications
-- `bun run check-types`: Check TypeScript types across all apps
-- `bun run check`: Run Biome formatting and linting
+The dev server only seems to crash when used inside the monorepo. If you copy the application elsewhere and run it, it works fine.
